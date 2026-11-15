@@ -25,7 +25,10 @@ add_library(orderbook
 )
 target_include_directories(orderbook PUBLIC include)
 
-add_executable(orderbook_app apps/main.cpp)
+add_executable(orderbook_app
+    apps/main.cpp
+    apps/workload_gen.cpp
+)
 target_link_libraries(orderbook_app PRIVATE orderbook)
 
 # Tests (GoogleTest)
