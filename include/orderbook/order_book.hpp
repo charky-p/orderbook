@@ -37,14 +37,15 @@ public:
     Quantity quantityAt(Side side, Price price) const;
     std::optional<Price> bestBid() const;
     std::optional<Price> bestAsk() const;
+    bool cancel(OrderId id);
 
-    // TODO: cancel
+    // TODO: Market orders vs limit orders
 private:
     OrderId m_nextId = 1;
 
-    // Temporary
-    std::vector<Order> m_buys;
-    std::vector<Order> m_sells;
+    // Temporary - naive way for benchmarking, need to use concepts later
+    std::vector<Order> m_bids; // descending
+    std::vector<Order> m_asks; // ascending
 };
 
 }  // namespace orderbook
